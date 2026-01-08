@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7trvitxmfmvp"]
+
+[ext_resource type="Texture2D" uid="uid://b3t4asbvlwckw" path="res://sprites/ocean/1/1.png" id="1_vvh5c"]
+[ext_resource type="Texture2D" uid="uid://dne0pnyu0wq03" path="res://sprites/ocean/1/2.png" id="2_28aoi"]
+[ext_resource type="Texture2D" uid="uid://tws6rnlw1fnb" path="res://sprites/ocean/1/3.png" id="3_jnlp7"]
+[ext_resource type="Script" uid="uid://brnwbim10jf8" path="res://player_camera.gd" id="4_28aoi"]
+[ext_resource type="Texture2D" uid="uid://blox6cpm3mudh" path="res://icon.svg" id="5_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://bosyoqogksuuf" path="res://scenes/plane.tscn" id="5_l8v81"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vyht1"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Root" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Ocean" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Ocean"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_vvh5c")
+centered = false
+
+[node name="FarClouds" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/FarClouds"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_28aoi")
+centered = false
+
+[node name="NearClouds" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(1150, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/NearClouds"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_jnlp7")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-500, 0)
+anchor_mode = 0
+script = ExtResource("4_28aoi")
+
+[node name="Plane" parent="." instance=ExtResource("5_l8v81")]
+position = Vector2(6, 316)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("ViewportTexture_vyht1")
+
+[node name="TestSprite" type="Sprite2D" parent="."]
+position = Vector2(-2398, 110)
+texture = ExtResource("5_jnlp7")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://bosyoqogksuuf"]
+
+[ext_resource type="PackedScene" uid="uid://cujpmyew56snb" path="res://scenes/fighter_plane.tscn" id="1_dt3pm"]
+[ext_resource type="Script" uid="uid://cidg7dh6tltcw" path="res://scenes/fighter_plane_model.gd" id="3_n0b6s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dt3pm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="GDScript" id="GDScript_206p1"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="sprite" type="Sprite2D"]
+texture = SubResource("ViewportTexture_dt3pm")
+script = SubResource("GDScript_206p1")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 1, 0)
+projection = 1
+current = true
+size = 4.0
+far = 10.0
+
+[node name="FighterPlane" parent="SubViewport/Node3D" instance=ExtResource("1_dt3pm")]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0)
+script = ExtResource("3_n0b6s")
+propellor_rotation_speed = 62.8
+
+[node name="Propeller1" parent="SubViewport/Node3D/FighterPlane" index="1"]
+transform = Transform3D(-0.8615689, -0.4974271, -0.10131672, -0.08774285, -0.050658327, 0.9948542, -0.5, 0.8660253, -4.626718e-08, 0.0143264765, 0.80381465, 1.7884669)
+
+[node name="Propeller3" parent="SubViewport/Node3D/FighterPlane" index="2"]
+transform = Transform3D(-0.38247317, -0.14681779, 0.9122274, -0.8516378, -0.32691318, -0.40968418, 0.35836804, -0.9335805, -3.968679e-08, -0.120015934, 0.9834984, 1.7884669)
+
+[node name="Propeller2" parent="SubViewport/Node3D/FighterPlane" index="3"]
+transform = Transform3D(0.5763356, -0.10162352, -0.81086963, -0.79855067, 0.140806, -0.5852265, 0.17364813, 0.9848076, -2.104535e-08, 0.10276599, 1.0100005, 1.7884669)
+
+[node name="PropellerAxis" type="Node3D" parent="SubViewport/Node3D/FighterPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.932, 1.788)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
+transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 2)
+omni_range = 10.0
+
+[editable path="SubViewport/Node3D/FighterPlane"]
