@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bosyoqogksuuf"]
 
 [ext_resource type="PackedScene" uid="uid://cujpmyew56snb" path="res://scenes/fighter_plane.tscn" id="1_dt3pm"]
-[ext_resource type="Script" uid="uid://cidg7dh6tltcw" path="res://scenes/fighter_plane_model.gd" id="3_n0b6s"]
+[ext_resource type="Script" uid="uid://cidg7dh6tltcw" path="res://scripts/fighter_plane_model.gd" id="3_n0b6s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dt3pm"]
 viewport_path = NodePath("SubViewport")
