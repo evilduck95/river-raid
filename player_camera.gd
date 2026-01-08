@@ -1,10 +1,10 @@
 extends Camera2D
 
+@export var player_position_in_frame: int = 200
+
+@onready var player: RigidBody2D = $"../Player"
 
 var move_speed = 10
 
 func _process(_delta: float) -> void:
-	if Input.is_key_pressed(KEY_RIGHT):
-		position.x += move_speed
-	elif Input.is_key_pressed(KEY_LEFT):
-		position.x -= move_speed
+	position.x = player.position.x - player_position_in_frame

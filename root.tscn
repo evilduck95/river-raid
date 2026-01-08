@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7trvitxmfmvp"]
+[gd_scene load_steps=10 format=3 uid="uid://c7trvitxmfmvp"]
 
 [ext_resource type="Texture2D" uid="uid://b3t4asbvlwckw" path="res://sprites/ocean/1/1.png" id="1_vvh5c"]
 [ext_resource type="Texture2D" uid="uid://dne0pnyu0wq03" path="res://sprites/ocean/1/2.png" id="2_28aoi"]
@@ -6,11 +6,21 @@
 [ext_resource type="Script" uid="uid://brnwbim10jf8" path="res://player_camera.gd" id="4_28aoi"]
 [ext_resource type="Texture2D" uid="uid://blox6cpm3mudh" path="res://icon.svg" id="5_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://bosyoqogksuuf" path="res://scenes/plane.tscn" id="5_l8v81"]
+[ext_resource type="Script" uid="uid://b1feyajxqvt1c" path="res://player.gd" id="6_vyht1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vyht1"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8v81"]
+radius = 14.0
+height = 196.0
+
 [node name="Root" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-578, 0)
+anchor_mode = 0
+script = ExtResource("4_28aoi")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -44,16 +54,28 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_jnlp7")
 centered = false
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-500, 0)
-anchor_mode = 0
-script = ExtResource("4_28aoi")
-
-[node name="Plane" parent="." instance=ExtResource("5_l8v81")]
-position = Vector2(6, 316)
-scale = Vector2(0.5, 0.5)
-texture = SubResource("ViewportTexture_vyht1")
-
 [node name="TestSprite" type="Sprite2D" parent="."]
 position = Vector2(-2398, 110)
 texture = ExtResource("5_jnlp7")
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(-3, 382)
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource("6_vyht1")
+
+[node name="PlaneModelProjection" parent="Player" instance=ExtResource("5_l8v81")]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("ViewportTexture_vyht1")
+script = null
+
+[node name="Camera3D" parent="Player/PlaneModelProjection/SubViewport/Node3D" index="0"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.8530173, 0.118018866, -0.12631607)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(3, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l8v81")
+
+[editable path="Player/PlaneModelProjection"]
+[editable path="Player/PlaneModelProjection/SubViewport/Node3D/FighterPlane/FighterPlaneModel"]
