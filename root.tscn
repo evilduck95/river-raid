@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://c7trvitxmfmvp"]
 
-[ext_resource type="Texture2D" uid="uid://b3t4asbvlwckw" path="res://sprites/ocean/1/1.png" id="1_vvh5c"]
-[ext_resource type="Texture2D" uid="uid://dne0pnyu0wq03" path="res://sprites/ocean/1/2.png" id="2_28aoi"]
-[ext_resource type="Texture2D" uid="uid://tws6rnlw1fnb" path="res://sprites/ocean/1/3.png" id="3_jnlp7"]
+[ext_resource type="Texture2D" uid="uid://b3t4asbvlwckw" path="res://sprites/imported/ocean/1/1.png" id="1_vvh5c"]
+[ext_resource type="Texture2D" uid="uid://dne0pnyu0wq03" path="res://sprites/imported/ocean/1/2.png" id="2_28aoi"]
+[ext_resource type="Texture2D" uid="uid://tws6rnlw1fnb" path="res://sprites/imported/ocean/1/3.png" id="3_jnlp7"]
 [ext_resource type="Script" uid="uid://brnwbim10jf8" path="res://scripts/player_camera.gd" id="4_28aoi"]
 [ext_resource type="Texture2D" uid="uid://blox6cpm3mudh" path="res://icon.svg" id="5_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://bosyoqogksuuf" path="res://scenes/plane.tscn" id="5_l8v81"]
 [ext_resource type="Script" uid="uid://b1feyajxqvt1c" path="res://scripts/player.gd" id="6_vyht1"]
-[ext_resource type="Texture2D" uid="uid://ik0vo63e6gke" path="res://sprites/laser_bullets/3/Laser Bullet 16.png" id="8_bf3um"]
+[ext_resource type="Texture2D" uid="uid://ik0vo63e6gke" path="res://sprites/imported/laser_bullets/3/Laser Bullet 16.png" id="8_bf3um"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vyht1"]
 viewport_path = NodePath("SubViewport")
