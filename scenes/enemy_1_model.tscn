@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5uwwl0ojvynp"]
+
+[ext_resource type="PackedScene" uid="uid://d342v6x6xyfoe" path="res://models/SopwithCamel+Pilot.fbx" id="1_ouwqs"]
+
+[node name="SopwithCamel+Pilot" instance=ExtResource("1_ouwqs")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)

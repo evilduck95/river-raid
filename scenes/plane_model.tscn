@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cujpmyew56snb"]
 
-[ext_resource type="PackedScene" uid="uid://dutl6qahsst3a" path="res://models/FighterPlane.glb" id="1_4ebgp"]
+[ext_resource type="PackedScene" uid="uid://dutl6qahsst3a" path="res://models/FighterPlane.glb" id="1_xic6b"]
 
-[node name="FighterPlane" instance=ExtResource("1_4ebgp")]
+[node name="FighterPlane" instance=ExtResource("1_xic6b")]
 
 [node name="PlaneTip" parent="." index="0"]
 transform = Transform3D(0.1266828, 0, 0, 0, -5.537481e-09, -0.1266828, 0, 0.1266828, -5.537481e-09, -0.0031650064, 0.9068803, 1.7741454)

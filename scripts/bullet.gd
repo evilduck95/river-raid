@@ -1,22 +1,27 @@
 extends Node2D
 
+@onready var explosion = $AnimatedSprite2D
 
+@export var damage: float = 10
 @export var speed: float = 100
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+var has_hit = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+func _process(_delta: float) -> void:
+	if has_hit and not explosion.is_playing():
+		self.queue_free()
+		
 func _physics_process(delta: float) -> void:
 	var velocity = transform.y * speed * delta
 	position -= velocity
 
-
-func _on_collision_with_body(body: Node2D) -> void:
-	#print("Collision with ", body.name)
-	pass
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var area_parent = area.get_parent()
+	if area_parent is Enemy:
+		area_parent.take_damage(damage)
+		reparent(area_parent)
+		speed = 0
+		explosion.play("explode")
+		has_hit = true
+		

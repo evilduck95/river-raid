@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bosyoqogksuuf"]
 
-[ext_resource type="PackedScene" uid="uid://cujpmyew56snb" path="res://scenes/fighter_plane.tscn" id="1_dt3pm"]
+[ext_resource type="PackedScene" uid="uid://cujpmyew56snb" path="res://scenes/plane_model.tscn" id="1_dt3pm"]
 [ext_resource type="Script" uid="uid://cidg7dh6tltcw" path="res://scripts/fighter_plane_model.gd" id="3_n0b6s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dt3pm"]
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		position.y += move_speed * delta
 "
 
-[node name="sprite" type="Sprite2D"]
+[node name="root" type="Sprite2D"]
 texture = SubResource("ViewportTexture_dt3pm")
 script = SubResource("GDScript_206p1")
 
@@ -61,11 +61,9 @@ transform = Transform3D(0.5763356, -0.10162352, -0.81086963, -0.79855067, 0.1408
 [node name="PropellerAxis" type="Node3D" parent="SubViewport/Node3D/FighterPlane/FighterPlaneModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 0.932, 1.788)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
-transform = Transform3D(0.8660254, 0.3535534, -0.3535534, 0, 0.7071068, 0.7071068, 0.5, -0.61237246, 0.61237246, 0, 0, 0)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 2)
-omni_range = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.377781, -1.2392883, 4.349777)
+omni_range = 20.0
+omni_attenuation = 0.5
 
 [editable path="SubViewport/Node3D/FighterPlane/FighterPlaneModel"]

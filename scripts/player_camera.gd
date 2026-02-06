@@ -4,7 +4,5 @@ extends Camera2D
 
 @onready var player: RigidBody2D = $"../Player"
 
-var move_speed = 10
-
 func _process(_delta: float) -> void:
 	position.x = player.position.x - player_position_in_frame

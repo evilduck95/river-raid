@@ -8,8 +8,12 @@ var bullet = preload("res://scenes/bullet.tscn")
 @onready var plane_model: PlaneModel = $PlaneModelProjection/SubViewport/Node3D/FighterPlane
 @onready var plane_model_projection = $PlaneModelProjection
 @onready var bullet_flash_sprite = $BulletFlash
+@onready var smoke_emitter: GPUParticles2D = $SmokeEmitter
 
-# Movement
+# Horizontal Movement
+@export var fly_speed = 100
+
+# Vertical Movement
 @export var acceleration = 100
 @export var max_speed = 200
 @export var damping = 10
@@ -25,17 +29,21 @@ var last_bullet_fired: float = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_constant_central_force(Vector2.RIGHT * 10)
+	add_constant_central_force(Vector2.RIGHT * fly_speed)
 	time_per_bullet = 1000.0 / fire_rate
+	smoke_emitter.amount = fire_rate
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("fire") and (Time.get_ticks_msec() - last_bullet_fired) > time_per_bullet:
+		smoke_emitter.emitting = true
 		bullet_flash()
 		var fired_bullet = bullet.instantiate()
 		bullet_manager.add_child(fired_bullet)
 		fired_bullet.position = position + transform.x * 50
 		fired_bullet.rotation = current_rotation + PI / 2
 		last_bullet_fired = Time.get_ticks_msec()
+	if not Input.is_action_pressed("fire"):
+		smoke_emitter.emitting = false
 
 func bullet_flash() -> void:
 	bullet_flash_sprite.visible = true
@@ -56,6 +64,8 @@ func _physics_process(delta: float) -> void:
 	plane_model_projection.rotation = -current_rotation
 	
 
-
 func model_rotated(new_rotation: float):
 	current_rotation = new_rotation
+
+func take_damage(amount):
+	print('Ouch! ', amount)

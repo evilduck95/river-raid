@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvfon0jqa1iav"]
+
+[ext_resource type="Script" uid="uid://clwpjpglmkyf2" path="res://scenes/enemy_plane.gd" id="1_a1412"]
+[ext_resource type="PackedScene" uid="uid://5uwwl0ojvynp" path="res://scenes/enemy_1_model.tscn" id="1_tcmaw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a1412"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1412"]
+size = Vector2(216, 112)
+
+[node name="enemy_1" type="Sprite2D" node_paths=PackedStringArray("propellor")]
+texture = SubResource("ViewportTexture_a1412")
+script = ExtResource("1_a1412")
+propellor = NodePath("SubViewport/3DRoot/Model/SopwithCamel+Pilot/SopwithCamelEmpty/PropellerEmpty_001")
+propellor_speed = 30.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+msaa_3d = 3
+canvas_cull_mask = 4294967293
+
+[node name="3DRoot" type="Node3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/3DRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6372185, -0.021299362, 5.529874)
+projection = 1
+size = 12.3158865
+near = 1.0
+far = 20.0
+
+[node name="Model" type="Node3D" parent="SubViewport/3DRoot"]
+transform = Transform3D(-0.005689753, 0, 0.9999838, 0, 1, 0, -0.9999838, 0, -0.005689753, 0, 0, 0)
+
+[node name="SopwithCamel+Pilot" parent="SubViewport/3DRoot/Model" instance=ExtResource("1_tcmaw")]
+
+[node name="SopwithCamelEmpty" parent="SubViewport/3DRoot/Model/SopwithCamel+Pilot" index="0"]
+transform = Transform3D(100, 1.5632411e-12, 6.833143e-20, 0, -4.3711384e-06, 99.99999, 1.5632412e-12, -99.99999, -4.3711384e-06, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/3DRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.730302, -1.2392883, 6.6444607)
+omni_range = 20.0
+omni_attenuation = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, -10)
+shape = SubResource("RectangleShape2D_a1412")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+
+[editable path="SubViewport/3DRoot/Model/SopwithCamel+Pilot"]

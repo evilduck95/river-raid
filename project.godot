@@ -45,6 +45,10 @@ fire={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_1="player"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
