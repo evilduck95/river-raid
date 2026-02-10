@@ -120,7 +120,7 @@ process_material = SubResource("ParticleProcessMaterial_huihk")
 [node name="World" type="Node3D" parent="."]
 
 [node name="SkyLight" type="DirectionalLight3D" parent="World"]
-transform = Transform3D(-0.18825504, -0.6472351, 0.7386793, 0.24649793, 0.6969141, 0.673461, -0.9506835, 0.308865, 0.028344542, 0, 0, 5.099282)
+transform = Transform3D(-0.94972515, 0.31211436, 0.02463124, 0.24649788, 0.6969141, 0.673461, 0.1930315, 0.6456745, -0.7388122, 0, 0, 5.099282)
 light_energy = 2.0
 light_specular = 2.0
 
@@ -129,7 +129,6 @@ transform = Transform3D(0.19905713, 0.93348897, 0.29828608, -0.35152122, 0.35213
 light_color = Color(0.3254902, 0.4862745, 1, 1)
 light_energy = 0.5
 light_angular_distance = 20.0
-light_specular = 0.0
 
 [node name="BulletManager" type="Node" parent="."]
 

@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 	rotation = current_rotation
 	plane_model_projection.rotation = -current_rotation
-	
 
 func model_rotated(new_rotation: float):
 	current_rotation = new_rotation

@@ -40,7 +40,10 @@ func _process(delta: float) -> void:
 	player.model_rotated(rotation.x)
 	#	Non-fps dependent rotation
 	var actual_rotation = propellor_rotation_speed * delta
+	rotate_propellor(actual_rotation)
+
+func rotate_propellor(rot: float): 
 #	For each individual wing on the propellor
 	for wing in propellor_parts:
 #		Rotate about global transform origin
-		wing.rotate(Vector3.BACK, actual_rotation)
+		wing.rotate(Vector3.BACK, rot)
